@@ -1,16 +1,24 @@
 # expressive_writing
 
-Presonal project with Flutter.
+A presonal project with flutter.
 
-## Getting Started
+## App Overview
 
-This project is a starting point for a Flutter application.
+A simple flutter app with TableCalneder and memo functions.
 
-A few resources to get you started if this is your first Flutter project:
+Main functions
+ - Calender
+ - Memo
+ - Level up function
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Architecture
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+MVVM + Repository
+
+## Flutter Version manager(FVM)
+
+ver 3.0.5
+
+## Branch operations
+
+Git-flow
