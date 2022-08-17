@@ -9,12 +9,12 @@ assignees: ''
 
 ## Overview
 
+## Details
 
 ## Requirement
-
 
 ## Deadline
 
 2022/08/01
 
-## Parent story
+## Related Tasks
