@@ -24,7 +24,7 @@ assignees: ''
 
 ## Deadline
 
-- 例：2020/08/01
+- 例：2022/08/01
 
 ## Related Tasks
 
