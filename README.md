@@ -10,6 +10,10 @@ Main functions
  - Calender
  - Memo
  - Level up function
+ 
+## StateManagement
+
+hooks_riverpod + state_notifier + freezed
 
 ## Architecture
 
