@@ -1,4 +1,5 @@
 import 'package:expressive_writing/presentation/navigation_page/navigation_page.dart';
+import 'package:expressive_writing/presentation/setting_page/settings_page.dart';
 import 'package:expressive_writing/presentation/user_page/user_page.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const UserPage(),
+      home: const SettingsPage(),
     );
   }
 }
