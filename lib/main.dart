@@ -1,7 +1,10 @@
 import 'package:expressive_writing/presentation/navigation_page/navigation_page.dart';
-import 'package:expressive_writing/presentation/setting_page/settings_page.dart';
-import 'package:expressive_writing/presentation/user_page/user_page.dart';
 import 'package:flutter/material.dart';
+import 'package:isar/isar.dart';
+import 'package:path_provider/path_provider.dart';
+import 'infrastructure/database/event.dart';
+
+late Isar isar;
 
 void main() {
   runApp(const MyApp());
@@ -9,15 +12,30 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  Future<void> initialize() async {
+    final dir = await getApplicationSupportDirectory();
+
+    isar = await Isar.open(
+      schemas: [EventSchema],
+      directory: dir.path,
+      inspector: true,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const SettingsPage(),
-    );
+    return FutureBuilder(
+        future: initialize(),
+        builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          return const MaterialApp(
+            title: "Isar Database setup",
+            home: MyHomePage(),
+          );
+        });
   }
 }
 
