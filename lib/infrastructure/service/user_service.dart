@@ -2,8 +2,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:isar/isar.dart';
 import 'package:expressive_writing/infrastructure/database/user/user.dart';
 
-// final ProviderFamily<UserService, Isar> userServiceProvider =
-//     Provider.family<UserService, Isar>((_, isar) => UserService(isar: isar));
+final ProviderFamily<UserService, Isar> userServiceProvider =
+    Provider.family<UserService, Isar>((_, isar) => UserService(isar: isar));
 
 class UserService {
   UserService({required this.isar});
