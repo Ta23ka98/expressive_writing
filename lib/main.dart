@@ -2,7 +2,7 @@ import 'package:expressive_writing/presentation/navigation_page/navigation_page.
 import 'package:flutter/material.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
-import 'infrastructure/database/event.dart';
+import 'infrastructure/database/event/event.dart';
 
 late Isar isar;
 
