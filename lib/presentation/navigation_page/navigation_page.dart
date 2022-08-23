@@ -1,4 +1,5 @@
 import 'package:expressive_writing/main.dart';
+import 'package:expressive_writing/presentation/user_page/user_page.dart';
 import 'package:flutter/material.dart';
 
 class NavigationPage extends StatefulWidget {
@@ -11,9 +12,9 @@ class NavigationPage extends StatefulWidget {
 class _NavigationPageState extends State<NavigationPage> {
   int selectedPage = 0;
   final pageItems = [
-    const MyHomePage(),
-    const MyHomePage(),
-    const MyHomePage(),
+    const UserPage(),
+    const UserPage(),
+    const UserPage(),
   ];
 
   void onPageSelection(int index) {
