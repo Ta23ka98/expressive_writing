@@ -1,6 +1,7 @@
 import 'dart:collection';
 //import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:expressive_diary/eventRepository.dart';
+import 'package:expressive_writing/presentation/addevent_page/addevent_page.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 //import '../event.dart';
@@ -155,16 +156,15 @@ class _CalenderPageState extends State<CalenderPage> {
           ],
         ),
       ),
-      floatingActionButton:
-          const FloatingActionButton(onPressed: null, child: Icon(Icons.add)
-              //     () {
-              //   Navigator.push(
-              //       context,
-              //       MaterialPageRoute(
-              //         builder: (context) => const AddEventScreen(),
-              //       ));
-              // },
-              ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AddEventPage(),
+                ));
+          },
+          child: Icon(Icons.add)),
     );
   }
 }
