@@ -1,4 +1,6 @@
-import 'package:expressive_writing/main.dart';
+import 'package:expressive_writing/presentation/calender_page/calender_page.dart';
+import 'package:expressive_writing/presentation/setting_page/settings_page.dart';
+import 'package:expressive_writing/presentation/user_page/user_page.dart';
 import 'package:flutter/material.dart';
 
 class NavigationPage extends StatefulWidget {
@@ -11,9 +13,9 @@ class NavigationPage extends StatefulWidget {
 class _NavigationPageState extends State<NavigationPage> {
   int selectedPage = 0;
   final pageItems = [
-    const MyHomePage(),
-    const MyHomePage(),
-    const MyHomePage(),
+    const CalenderPage(),
+    const UserPage(),
+    const SettingsPage(),
   ];
 
   void onPageSelection(int index) {
@@ -26,8 +28,9 @@ class _NavigationPageState extends State<NavigationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Expressive Writing")),
-      body: const Center(child: Text("Bottom Navigation")),
+      body: pageItems[selectedPage],
       bottomNavigationBar: BottomNavigationBar(
+        onTap: onPageSelection,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               icon: Icon(Icons.calendar_month), label: "Diary"),

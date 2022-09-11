@@ -113,7 +113,7 @@ class _AddEventPageState extends State<AddEventPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text("AddEventScreen"),
+        title: const Text("AddEventPage"),
       ),
       body: Container(
         padding: const EdgeInsets.all(10),
@@ -143,13 +143,13 @@ class _AddEventPageState extends State<AddEventPage> {
               style: const TextStyle(fontSize: 15),
             ),
             const SizedBox(height: 20),
-            SizedBox(
+            const SizedBox(
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
                 onPressed: null,
                 //addEventMethod,
-                child: const Text("完了"),
+                child: Text("完了"),
               ),
             )
           ],
