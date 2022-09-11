@@ -1,8 +1,5 @@
 import 'package:expressive_writing/firebase_options.dart';
-import 'package:expressive_writing/presentation/calender_page/calender_page.dart';
-// import 'package:expressive_writing/presentation/navigation_page/navigation_page.dart';
-// import 'package:expressive_writing/presentation/setting_page/settings_page.dart';
-// import 'package:expressive_writing/presentation/user_page/user_page.dart';
+import 'package:expressive_writing/presentation/navigation_page/navigation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -21,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const CalenderPage(),
+      home: const NavigationPage(),
     );
   }
 }
