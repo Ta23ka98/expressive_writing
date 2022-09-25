@@ -1,4 +1,5 @@
 import 'package:expressive_writing/firebase_options.dart';
+import 'package:expressive_writing/presentation/first_page/firstpage.dart';
 import 'package:expressive_writing/presentation/navigation_page/navigation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const NavigationPage(),
+      home: const FirstPage(),
     );
   }
 }
