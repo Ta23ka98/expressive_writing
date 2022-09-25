@@ -11,8 +11,8 @@ class NavigationPage extends StatefulWidget {
 }
 
 class _NavigationPageState extends State<NavigationPage> {
-  int selectedPage = 0;
-  final pageItems = [
+  int _selectedPage = 0;
+  final _pageItems = [
     const CalenderPage(),
     const UserPage(),
     const SettingsPage(),
@@ -20,7 +20,7 @@ class _NavigationPageState extends State<NavigationPage> {
 
   void onPageSelection(int index) {
     setState(() {
-      selectedPage = index;
+      _selectedPage = index;
     });
   }
 
@@ -28,8 +28,9 @@ class _NavigationPageState extends State<NavigationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Expressive Writing")),
-      body: pageItems[selectedPage],
+      body: _pageItems[_selectedPage],
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedPage,
         onTap: onPageSelection,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
