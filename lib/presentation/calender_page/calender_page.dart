@@ -1,12 +1,10 @@
 import 'dart:collection';
-//import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:expressive_diary/eventRepository.dart';
 import 'package:expressive_writing/presentation/addevent_page/addevent_page.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-//import '../event.dart';
+import 'package:expressive_writing/domain/entity/event.dart';
 //import '../utils.dart' as utils;
-//import 'add_event_screen.dart';
 
 Map<DateTime, List<Event>> selectedEvents = {};
 DateTime _focusedDay = DateTime.now();
@@ -14,13 +12,6 @@ final kFirstDay =
     DateTime(DateTime.now().year, DateTime.now().month - 3, DateTime.now().day);
 final kLastDay =
     DateTime(DateTime.now().year, DateTime.now().month + 3, DateTime.now().day);
-
-class Event {
-  final String title;
-  const Event({required this.title});
-  @override
-  String toString() => title;
-}
 
 /// Using a [LinkedHashMap] is highly recommended if you decide to use a map.
 var kEvents = LinkedHashMap<DateTime, List<Event>>(
@@ -164,7 +155,7 @@ class _CalenderPageState extends State<CalenderPage> {
                   builder: (context) => const AddEventPage(),
                 ));
           },
-          child: Icon(Icons.add)),
+          child: const Icon(Icons.add)),
     );
   }
 }
