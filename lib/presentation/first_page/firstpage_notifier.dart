@@ -2,7 +2,7 @@ import 'package:expressive_writing/infrastructure/auth_repository.dart';
 import 'package:expressive_writing/state/firstpage_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final firstPageNotifier = StateNotifierProvider((ref) {
+final firstPageNotifierProvider = StateNotifierProvider((ref) {
   return FirstPageNotifier(authRepository: ref.read(authRepositoryProvider));
 });
 
