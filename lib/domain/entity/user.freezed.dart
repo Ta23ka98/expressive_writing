@@ -20,16 +20,14 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$User {
-  @JsonKey(name: "name")
-  String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: "userName")
+  String get userName => throw _privateConstructorUsedError;
   @JsonKey(name: "userLevel")
   int get userLevel => throw _privateConstructorUsedError;
   @JsonKey(name: "diaryLetters")
   int get diaryLetters => throw _privateConstructorUsedError;
   @JsonKey(name: "diaryNumbers")
   int get diaryNumbers => throw _privateConstructorUsedError;
-  @JsonKey(name: "lettersUntilNextLevel")
-  int get lettersUntilNextLevel => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,11 +39,10 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: "name") String name,
+      {@JsonKey(name: "userName") String userName,
       @JsonKey(name: "userLevel") int userLevel,
       @JsonKey(name: "diaryLetters") int diaryLetters,
-      @JsonKey(name: "diaryNumbers") int diaryNumbers,
-      @JsonKey(name: "lettersUntilNextLevel") int lettersUntilNextLevel});
+      @JsonKey(name: "diaryNumbers") int diaryNumbers});
 }
 
 /// @nodoc
@@ -58,16 +55,15 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? name = freezed,
+    Object? userName = freezed,
     Object? userLevel = freezed,
     Object? diaryLetters = freezed,
     Object? diaryNumbers = freezed,
-    Object? lettersUntilNextLevel = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      userName: userName == freezed
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
               as String,
       userLevel: userLevel == freezed
           ? _value.userLevel
@@ -81,10 +77,6 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.diaryNumbers
           : diaryNumbers // ignore: cast_nullable_to_non_nullable
               as int,
-      lettersUntilNextLevel: lettersUntilNextLevel == freezed
-          ? _value.lettersUntilNextLevel
-          : lettersUntilNextLevel // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -95,11 +87,10 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$_UserCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: "name") String name,
+      {@JsonKey(name: "userName") String userName,
       @JsonKey(name: "userLevel") int userLevel,
       @JsonKey(name: "diaryLetters") int diaryLetters,
-      @JsonKey(name: "diaryNumbers") int diaryNumbers,
-      @JsonKey(name: "lettersUntilNextLevel") int lettersUntilNextLevel});
+      @JsonKey(name: "diaryNumbers") int diaryNumbers});
 }
 
 /// @nodoc
@@ -113,16 +104,15 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? name = freezed,
+    Object? userName = freezed,
     Object? userLevel = freezed,
     Object? diaryLetters = freezed,
     Object? diaryNumbers = freezed,
-    Object? lettersUntilNextLevel = freezed,
   }) {
     return _then(_$_User(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      userName: userName == freezed
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
               as String,
       userLevel: userLevel == freezed
           ? _value.userLevel
@@ -136,10 +126,6 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.diaryNumbers
           : diaryNumbers // ignore: cast_nullable_to_non_nullable
               as int,
-      lettersUntilNextLevel: lettersUntilNextLevel == freezed
-          ? _value.lettersUntilNextLevel
-          : lettersUntilNextLevel // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -148,23 +134,17 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_User extends _User with DiagnosticableTreeMixin {
   _$_User(
-      {@JsonKey(name: "name")
-          required this.name,
-      @JsonKey(name: "userLevel")
-          required this.userLevel,
-      @JsonKey(name: "diaryLetters")
-          required this.diaryLetters,
-      @JsonKey(name: "diaryNumbers")
-          required this.diaryNumbers,
-      @JsonKey(name: "lettersUntilNextLevel")
-          required this.lettersUntilNextLevel})
+      {@JsonKey(name: "userName") required this.userName,
+      @JsonKey(name: "userLevel") required this.userLevel,
+      @JsonKey(name: "diaryLetters") required this.diaryLetters,
+      @JsonKey(name: "diaryNumbers") required this.diaryNumbers})
       : super._();
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
   @override
-  @JsonKey(name: "name")
-  final String name;
+  @JsonKey(name: "userName")
+  final String userName;
   @override
   @JsonKey(name: "userLevel")
   final int userLevel;
@@ -174,13 +154,10 @@ class _$_User extends _User with DiagnosticableTreeMixin {
   @override
   @JsonKey(name: "diaryNumbers")
   final int diaryNumbers;
-  @override
-  @JsonKey(name: "lettersUntilNextLevel")
-  final int lettersUntilNextLevel;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(name: $name, userLevel: $userLevel, diaryLetters: $diaryLetters, diaryNumbers: $diaryNumbers, lettersUntilNextLevel: $lettersUntilNextLevel)';
+    return 'User(userName: $userName, userLevel: $userLevel, diaryLetters: $diaryLetters, diaryNumbers: $diaryNumbers)';
   }
 
   @override
@@ -188,12 +165,10 @@ class _$_User extends _User with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'User'))
-      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('userName', userName))
       ..add(DiagnosticsProperty('userLevel', userLevel))
       ..add(DiagnosticsProperty('diaryLetters', diaryLetters))
-      ..add(DiagnosticsProperty('diaryNumbers', diaryNumbers))
-      ..add(
-          DiagnosticsProperty('lettersUntilNextLevel', lettersUntilNextLevel));
+      ..add(DiagnosticsProperty('diaryNumbers', diaryNumbers));
   }
 
   @override
@@ -201,25 +176,22 @@ class _$_User extends _User with DiagnosticableTreeMixin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_User &&
-            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.userName, userName) &&
             const DeepCollectionEquality().equals(other.userLevel, userLevel) &&
             const DeepCollectionEquality()
                 .equals(other.diaryLetters, diaryLetters) &&
             const DeepCollectionEquality()
-                .equals(other.diaryNumbers, diaryNumbers) &&
-            const DeepCollectionEquality()
-                .equals(other.lettersUntilNextLevel, lettersUntilNextLevel));
+                .equals(other.diaryNumbers, diaryNumbers));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(userName),
       const DeepCollectionEquality().hash(userLevel),
       const DeepCollectionEquality().hash(diaryLetters),
-      const DeepCollectionEquality().hash(diaryNumbers),
-      const DeepCollectionEquality().hash(lettersUntilNextLevel));
+      const DeepCollectionEquality().hash(diaryNumbers));
 
   @JsonKey(ignore: true)
   @override
@@ -236,23 +208,18 @@ class _$_User extends _User with DiagnosticableTreeMixin {
 
 abstract class _User extends User {
   factory _User(
-      {@JsonKey(name: "name")
-          required final String name,
-      @JsonKey(name: "userLevel")
-          required final int userLevel,
-      @JsonKey(name: "diaryLetters")
-          required final int diaryLetters,
-      @JsonKey(name: "diaryNumbers")
-          required final int diaryNumbers,
-      @JsonKey(name: "lettersUntilNextLevel")
-          required final int lettersUntilNextLevel}) = _$_User;
+          {@JsonKey(name: "userName") required final String userName,
+          @JsonKey(name: "userLevel") required final int userLevel,
+          @JsonKey(name: "diaryLetters") required final int diaryLetters,
+          @JsonKey(name: "diaryNumbers") required final int diaryNumbers}) =
+      _$_User;
   _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
-  @JsonKey(name: "name")
-  String get name;
+  @JsonKey(name: "userName")
+  String get userName;
   @override
   @JsonKey(name: "userLevel")
   int get userLevel;
@@ -262,9 +229,6 @@ abstract class _User extends User {
   @override
   @JsonKey(name: "diaryNumbers")
   int get diaryNumbers;
-  @override
-  @JsonKey(name: "lettersUntilNextLevel")
-  int get lettersUntilNextLevel;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
