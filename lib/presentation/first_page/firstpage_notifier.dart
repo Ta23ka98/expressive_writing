@@ -20,4 +20,22 @@ class FirstPageNotifier extends StateNotifier<FirstPageState> {
   void setPassword(String password) {
     state = state.copyWith(password: password);
   }
+
+  Future<void> signUp() async {
+    try {
+      await _authRepository.signUp(
+          email: state.email, password: state.password);
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  Future<void> signIn() async {
+    try {
+      await _authRepository.signIn(
+          email: state.email, password: state.password);
+    } catch (e) {
+      throw e.toString();
+    }
+  }
 }
