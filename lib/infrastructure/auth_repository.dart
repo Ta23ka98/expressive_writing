@@ -1,5 +1,14 @@
+import 'package:expressive_writing/common/logger_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+final authRepositoryProvider = Provider((ref) {
+  return AuthRepository(logger: ref.read(loggerProvider));
+});
+
+final authStateProvider =
+    StreamProvider((ref) => ref.watch(authRepositoryProvider).authStateChange);
 
 abstract class BaseAuthRepository {
   Future<void> signUp({required String email, required String password});
