@@ -1,5 +1,8 @@
 //import 'package:expressive_diary/Screens/frame_widget.dart';
 //import 'package:expressive_diary/Screens/main.dart';
+import 'dart:math';
+
+import 'package:expressive_writing/common/logger_provider.dart';
 import 'package:expressive_writing/presentation/first_page/firstpage_notifier.dart';
 import 'package:expressive_writing/presentation/navigation_page/navigation_page.dart';
 import 'package:flutter/material.dart';
@@ -80,6 +83,7 @@ class FirstPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.read(firstPageNotifierProvider);
     final notifier = ref.read(firstPageNotifierProvider.notifier);
+    final logger = ref.read(loggerProvider);
     final emailController = useTextEditingController(text: "");
     final passwordController = useTextEditingController(text: "");
     return Scaffold(
@@ -112,7 +116,16 @@ class FirstPage extends HookConsumerWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () async {
-                    await notifier.signUp();
+                    try {
+                      await notifier.signUp();
+                      () => Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const NavigationPage()),
+                          (route) => false);
+                    } catch (e) {
+                      logger.e(e.toString());
+                    }
                   },
                   child: const Text("新規登録"),
                 ),
@@ -122,7 +135,17 @@ class FirstPage extends HookConsumerWidget {
                 width: double.infinity,
                 child: OutlinedButton(
                   onPressed: () async {
-                    notifier.signIn();
+                    try {
+                      notifier.signIn();
+                      await notifier.signUp();
+                      () => Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const NavigationPage()),
+                          (route) => false);
+                    } catch (e) {
+                      logger.e(e.toString());
+                    }
                   },
                   child: const Text("ログイン"),
                 ),
