@@ -21,13 +21,14 @@ Event _$EventFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Event {
   @JsonKey(name: "description")
-  String get description => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   @JsonKey(name: "wordCount")
-  int get wordCount => throw _privateConstructorUsedError;
+  int? get wordCount => throw _privateConstructorUsedError;
   @JsonKey(name: "madeBy")
-  String get madeBy => throw _privateConstructorUsedError;
+  String? get madeBy => throw _privateConstructorUsedError;
+  @TimestampConverter()
   @JsonKey(name: "createdAt")
-  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,10 +40,10 @@ abstract class $EventCopyWith<$Res> {
   factory $EventCopyWith(Event value, $Res Function(Event) then) =
       _$EventCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: "description") String description,
-      @JsonKey(name: "wordCount") int wordCount,
-      @JsonKey(name: "madeBy") String madeBy,
-      @JsonKey(name: "createdAt") DateTime createdAt});
+      {@JsonKey(name: "description") String? description,
+      @JsonKey(name: "wordCount") int? wordCount,
+      @JsonKey(name: "madeBy") String? madeBy,
+      @TimestampConverter() @JsonKey(name: "createdAt") DateTime? createdAt});
 }
 
 /// @nodoc
@@ -64,19 +65,19 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       wordCount: wordCount == freezed
           ? _value.wordCount
           : wordCount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       madeBy: madeBy == freezed
           ? _value.madeBy
           : madeBy // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -87,10 +88,10 @@ abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
       __$$_EventCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: "description") String description,
-      @JsonKey(name: "wordCount") int wordCount,
-      @JsonKey(name: "madeBy") String madeBy,
-      @JsonKey(name: "createdAt") DateTime createdAt});
+      {@JsonKey(name: "description") String? description,
+      @JsonKey(name: "wordCount") int? wordCount,
+      @JsonKey(name: "madeBy") String? madeBy,
+      @TimestampConverter() @JsonKey(name: "createdAt") DateTime? createdAt});
 }
 
 /// @nodoc
@@ -113,19 +114,19 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       wordCount: wordCount == freezed
           ? _value.wordCount
           : wordCount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       madeBy: madeBy == freezed
           ? _value.madeBy
           : madeBy // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
     ));
   }
 }
@@ -134,10 +135,10 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Event extends _Event with DiagnosticableTreeMixin {
   _$_Event(
-      {@JsonKey(name: "description") required this.description,
-      @JsonKey(name: "wordCount") required this.wordCount,
-      @JsonKey(name: "madeBy") required this.madeBy,
-      @JsonKey(name: "createdAt") required this.createdAt})
+      {@JsonKey(name: "description") this.description,
+      @JsonKey(name: "wordCount") this.wordCount,
+      @JsonKey(name: "madeBy") this.madeBy,
+      @TimestampConverter() @JsonKey(name: "createdAt") this.createdAt})
       : super._();
 
   factory _$_Event.fromJson(Map<String, dynamic> json) =>
@@ -145,16 +146,17 @@ class _$_Event extends _Event with DiagnosticableTreeMixin {
 
   @override
   @JsonKey(name: "description")
-  final String description;
+  final String? description;
   @override
   @JsonKey(name: "wordCount")
-  final int wordCount;
+  final int? wordCount;
   @override
   @JsonKey(name: "madeBy")
-  final String madeBy;
+  final String? madeBy;
   @override
+  @TimestampConverter()
   @JsonKey(name: "createdAt")
-  final DateTime createdAt;
+  final DateTime? createdAt;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -208,27 +210,32 @@ class _$_Event extends _Event with DiagnosticableTreeMixin {
 
 abstract class _Event extends Event {
   factory _Event(
-          {@JsonKey(name: "description") required final String description,
-          @JsonKey(name: "wordCount") required final int wordCount,
-          @JsonKey(name: "madeBy") required final String madeBy,
-          @JsonKey(name: "createdAt") required final DateTime createdAt}) =
-      _$_Event;
+      {@JsonKey(name: "description")
+          final String? description,
+      @JsonKey(name: "wordCount")
+          final int? wordCount,
+      @JsonKey(name: "madeBy")
+          final String? madeBy,
+      @TimestampConverter()
+      @JsonKey(name: "createdAt")
+          final DateTime? createdAt}) = _$_Event;
   _Event._() : super._();
 
   factory _Event.fromJson(Map<String, dynamic> json) = _$_Event.fromJson;
 
   @override
   @JsonKey(name: "description")
-  String get description;
+  String? get description;
   @override
   @JsonKey(name: "wordCount")
-  int get wordCount;
+  int? get wordCount;
   @override
   @JsonKey(name: "madeBy")
-  String get madeBy;
+  String? get madeBy;
   @override
+  @TimestampConverter()
   @JsonKey(name: "createdAt")
-  DateTime get createdAt;
+  DateTime? get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$_EventCopyWith<_$_Event> get copyWith =>
