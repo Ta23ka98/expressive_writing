@@ -3,7 +3,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:expressive_writing/infrastructure/auth_repository.dart';
 import 'package:expressive_writing/infrastructure/user_repository.dart';
 
-final userPageNotifierProvider = Provider((ref) {
+final userPageNotifierProvider =
+    StateNotifierProvider<UserPageNotifier, UserPageState>((ref) {
   return UserPageNotifier(
       authRepository: ref.read(authRepositoryProvider),
       userRepository: ref.read(userRepositoryProvider));
