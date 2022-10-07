@@ -19,4 +19,10 @@ class UserPageNotifier extends StateNotifier<UserPageState> {
       : _authRepository = authRepository,
         _userRepository = userRepository,
         super(UserPageState.initial());
+
+  Future<void> fetch() async {
+    final uid = _authRepository.getUid();
+    final user = await _userRepository.findById(id: uid!);
+    state = state.copyWith(user: user);
+  }
 }
