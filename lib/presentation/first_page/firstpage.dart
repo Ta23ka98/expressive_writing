@@ -136,8 +136,7 @@ class FirstPage extends HookConsumerWidget {
                 child: OutlinedButton(
                   onPressed: () async {
                     try {
-                      notifier.signIn();
-                      await notifier.signUp();
+                      await notifier.signIn();
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
