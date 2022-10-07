@@ -20,6 +20,8 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$User {
+  @JsonKey(name: "id")
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(name: "userName")
   String get userName => throw _privateConstructorUsedError;
   @JsonKey(name: "userLevel")
@@ -39,7 +41,8 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: "userName") String userName,
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "userName") String userName,
       @JsonKey(name: "userLevel") int userLevel,
       @JsonKey(name: "diaryLetters") int diaryLetters,
       @JsonKey(name: "diaryNumbers") int diaryNumbers});
@@ -55,12 +58,17 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? userName = freezed,
     Object? userLevel = freezed,
     Object? diaryLetters = freezed,
     Object? diaryNumbers = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       userName: userName == freezed
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -87,7 +95,8 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$_UserCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: "userName") String userName,
+      {@JsonKey(name: "id") String id,
+      @JsonKey(name: "userName") String userName,
       @JsonKey(name: "userLevel") int userLevel,
       @JsonKey(name: "diaryLetters") int diaryLetters,
       @JsonKey(name: "diaryNumbers") int diaryNumbers});
@@ -104,12 +113,17 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? userName = freezed,
     Object? userLevel = freezed,
     Object? diaryLetters = freezed,
     Object? diaryNumbers = freezed,
   }) {
     return _then(_$_User(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       userName: userName == freezed
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -134,7 +148,8 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_User extends _User with DiagnosticableTreeMixin {
   _$_User(
-      {@JsonKey(name: "userName") required this.userName,
+      {@JsonKey(name: "id") required this.id,
+      @JsonKey(name: "userName") required this.userName,
       @JsonKey(name: "userLevel") required this.userLevel,
       @JsonKey(name: "diaryLetters") required this.diaryLetters,
       @JsonKey(name: "diaryNumbers") required this.diaryNumbers})
@@ -142,6 +157,9 @@ class _$_User extends _User with DiagnosticableTreeMixin {
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
+  @override
+  @JsonKey(name: "id")
+  final String id;
   @override
   @JsonKey(name: "userName")
   final String userName;
@@ -157,7 +175,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(userName: $userName, userLevel: $userLevel, diaryLetters: $diaryLetters, diaryNumbers: $diaryNumbers)';
+    return 'User(id: $id, userName: $userName, userLevel: $userLevel, diaryLetters: $diaryLetters, diaryNumbers: $diaryNumbers)';
   }
 
   @override
@@ -165,6 +183,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'User'))
+      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('userName', userName))
       ..add(DiagnosticsProperty('userLevel', userLevel))
       ..add(DiagnosticsProperty('diaryLetters', diaryLetters))
@@ -176,6 +195,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_User &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.userName, userName) &&
             const DeepCollectionEquality().equals(other.userLevel, userLevel) &&
             const DeepCollectionEquality()
@@ -188,6 +208,7 @@ class _$_User extends _User with DiagnosticableTreeMixin {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(userName),
       const DeepCollectionEquality().hash(userLevel),
       const DeepCollectionEquality().hash(diaryLetters),
@@ -208,7 +229,8 @@ class _$_User extends _User with DiagnosticableTreeMixin {
 
 abstract class _User extends User {
   factory _User(
-          {@JsonKey(name: "userName") required final String userName,
+          {@JsonKey(name: "id") required final String id,
+          @JsonKey(name: "userName") required final String userName,
           @JsonKey(name: "userLevel") required final int userLevel,
           @JsonKey(name: "diaryLetters") required final int diaryLetters,
           @JsonKey(name: "diaryNumbers") required final int diaryNumbers}) =
@@ -217,6 +239,9 @@ abstract class _User extends User {
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
+  @override
+  @JsonKey(name: "id")
+  String get id;
   @override
   @JsonKey(name: "userName")
   String get userName;

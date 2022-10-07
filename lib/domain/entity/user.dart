@@ -9,6 +9,7 @@ class User with _$User {
   const User._();
 
   factory User({
+    @JsonKey(name: "id") required String id,
     @JsonKey(name: "userName") required String userName,
     @JsonKey(name: "userLevel") required int userLevel,
     @JsonKey(name: "diaryLetters") required int diaryLetters,
@@ -16,4 +17,7 @@ class User with _$User {
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
+  factory User.initial() => User(
+      id: "", userName: "ゲスト", userLevel: 1, diaryLetters: 0, diaryNumbers: 0);
 }
