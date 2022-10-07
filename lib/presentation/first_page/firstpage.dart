@@ -118,7 +118,7 @@ class FirstPage extends HookConsumerWidget {
                   onPressed: () async {
                     try {
                       await notifier.signUp();
-                      () => Navigator.pushAndRemoveUntil(
+                      Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
                               builder: (_) => const NavigationPage()),
@@ -138,7 +138,7 @@ class FirstPage extends HookConsumerWidget {
                     try {
                       notifier.signIn();
                       await notifier.signUp();
-                      () => Navigator.pushAndRemoveUntil(
+                      Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
                               builder: (_) => const NavigationPage()),
