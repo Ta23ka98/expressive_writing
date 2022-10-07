@@ -1,3 +1,4 @@
+import 'package:expressive_writing/domain/entity/user.dart';
 import 'package:expressive_writing/infrastructure/auth_repository.dart';
 import 'package:expressive_writing/infrastructure/user_repository.dart';
 import 'package:expressive_writing/state/firstpage_state.dart';
@@ -33,6 +34,16 @@ class FirstPageNotifier extends StateNotifier<FirstPageState> {
     try {
       await _authRepository.signUp(
           email: state.email, password: state.password);
+
+      final uid = _authRepository.getUid();
+
+      await _userRepository.create(
+          user: User(
+              id: uid!,
+              userName: "ゲスト",
+              userLevel: 1,
+              diaryLetters: 0,
+              diaryNumbers: 0));
     } catch (e) {
       throw e.toString();
     }
