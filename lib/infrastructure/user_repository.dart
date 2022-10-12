@@ -35,7 +35,7 @@ class UserRepository {
       "id": json.id,
       "userName": json["userName"],
       "userLevel": json["userLevel"],
-      "diaryLetters": json["password"],
+      "diaryLetters": json["diaryLetters"],
       "diaryNumbers": json["diaryNumbers"],
     };
   }
