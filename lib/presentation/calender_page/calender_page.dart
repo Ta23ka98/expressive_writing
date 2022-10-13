@@ -152,7 +152,7 @@ class _CalenderPageState extends State<CalenderPage> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const AddEventPage(),
+                  builder: (context) => AddEventPage(),
                 ));
           },
           child: const Icon(Icons.add)),
