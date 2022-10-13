@@ -13,11 +13,7 @@ class AddEventPageNotifier extends StateNotifier<AddEventPageState> {
     required BaseAuthRepository authRepository,
   })  : _eventRepository = eventRepository,
         _authRepository = authRepository,
-        super(AddEventPageState(
-            description: "",
-            wordCount: 0,
-            createdAt: DateTime.now(),
-            madeBy: FirebaseAuth.instance.currentUser!.uid));
+        super(AddEventPageState.initial());
 
   Future<void> setDescription(String description) async {
     state = state.copyWith(description: description);
