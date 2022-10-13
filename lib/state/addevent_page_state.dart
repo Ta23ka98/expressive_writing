@@ -13,4 +13,7 @@ class AddEventPageState with _$AddEventPageState {
     required DateTime createdAt,
     required String madeBy,
   }) = _AddEventPageState;
+
+  factory AddEventPageState.initial() => AddEventPageState(
+      description: "", wordCount: 0, createdAt: DateTime.now(), madeBy: "");
 }
