@@ -4,16 +4,10 @@ import 'package:flutter/material.dart';
 //import 'basic_example.dart';
 import 'package:expressive_writing/presentation/calender_page/calender_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class AddEventPage extends StatefulWidget {
-  const AddEventPage({Key? key}) : super(key: key);
-
-  @override
-  State<AddEventPage> createState() => _AddEventPageState();
-}
-
-class _AddEventPageState extends State<AddEventPage> {
-  final TextEditingController _textEditingController = TextEditingController();
+class AddEventPage extends HookConsumerWidget {
   int charLength = 0;
   String _text = '';
   final DateTime _focusedDay = DateTime.now();
@@ -23,15 +17,15 @@ class _AddEventPageState extends State<AddEventPage> {
 
   @override
   void dispose() {
-    _textEditingController.dispose();
-    super.dispose();
+    // _textEditingController.dispose();
+    // super.dispose();
   }
 
   void _handleText(String e) {
-    setState(() {
-      _text = e;
-      charLength = _text.length;
-    });
+    // setState(() {
+    //   _text = e;
+    //   charLength = _text.length;
+    // });
   }
 
   // void addEventMethod() {
@@ -109,7 +103,8 @@ class _AddEventPageState extends State<AddEventPage> {
   // }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final descriptionController = useTextEditingController(text: "");
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -131,9 +126,10 @@ class _AddEventPageState extends State<AddEventPage> {
                   shape: BoxShape.rectangle,
                   border: Border.all(color: Colors.blue, width: 1)),
               child: TextField(
+                onTap: () {},
                 decoration: const InputDecoration(
                     border: InputBorder.none, hintText: " 日記を書こう！"),
-                controller: _textEditingController,
+                controller: descriptionController,
                 onChanged: _handleText,
               ),
             ),
