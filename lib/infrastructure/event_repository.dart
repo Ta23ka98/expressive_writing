@@ -6,11 +6,28 @@ class EventRepository {
   final _db = FirebaseFirestore.instance;
   late final CollectionReference _eventRef;
 
-  void init() {}
+  void init() {
+    _eventRef = _db.collection("Events");
+  }
 
-  Future<void> findById() async {}
+  // Future<Event> findById({required String id}) async {
+  //   final doc = await _eventRef.doc(id).get();
+  //   return Event.fromJson(_jsonFromSnapShot(doc));
+  // }
 
-  Future<void> addEvent() async {}
+  Future<List<Event>> fetchAllEvents({required String id}) async {
+    final eventRef = _eventRef.where("madeBy", isEqualTo: id);
+    final snapshot = await eventRef.get();
+    return snapshot.docs
+        .map((item) => Event.fromJson(
+              _jsonFromSnapShot(item),
+            ))
+        .toList();
+  }
+
+  Future<void> addEvent({required Event event}) async {
+    await _eventRef.doc().set(event.toJson());
+  }
 
   Future<void> update() async {}
 
