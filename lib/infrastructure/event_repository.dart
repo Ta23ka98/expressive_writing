@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:expressive_writing/domain/entity/event.dart';
 
+final eventRepositoryProvider = Provider((ref) => EventRepository()..init());
+
 class EventRepository {
   final _db = FirebaseFirestore.instance;
   late final CollectionReference _eventRef;
