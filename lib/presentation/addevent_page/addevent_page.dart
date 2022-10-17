@@ -129,7 +129,7 @@ class AddEventPage extends HookConsumerWidget {
                   shape: BoxShape.rectangle,
                   border: Border.all(color: Colors.blue, width: 1)),
               child: TextField(
-                onChanged: (value) => {notifier.setDescription(value)},
+                onChanged: (value) => {notifier.setDescriptionAndCount(value)},
                 decoration: const InputDecoration(
                     border: InputBorder.none, hintText: " 日記を書こう！"),
                 controller: descriptionController,
@@ -137,15 +137,22 @@ class AddEventPage extends HookConsumerWidget {
             ),
             const SizedBox(height: 20),
             Text(
-              "${charLength.toString()}字！",
+              "${state.wordCount.toString()}字！",
               style: const TextStyle(fontSize: 15),
             ),
             const SizedBox(height: 20),
-            const SizedBox(
+            SizedBox(
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
-                onPressed: null,
+                onPressed: () async {
+                  await notifier.addEvent(
+                      description: state.description,
+                      wordCount: state.wordCount,
+                      createdAt: DateTime.now(),
+                      madeBy: FirebaseAuth.instance.currentUser!.uid);
+                  Navigator.pop(context);
+                },
                 //addEventMethod,
                 child: Text("完了"),
               ),
