@@ -4,6 +4,11 @@ import 'package:expressive_writing/state/addevent_page_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+final addEventPageNotifierProvider = StateNotifierProvider((ref) =>
+    AddEventPageNotifier(
+        eventRepository: ref.read(eventRepositoryProvider),
+        authRepository: ref.read(authRepositoryProvider)));
+
 class AddEventPageNotifier extends StateNotifier<AddEventPageState> {
   final BaseAuthRepository _authRepository;
   final EventRepository _eventRepository;
