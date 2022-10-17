@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:expressive_writing/presentation/addevent_page/addevent_page_notifier.dart';
 //import 'package:expressive_diary/event.dart';
 import 'package:flutter/material.dart';
 //import 'basic_example.dart';
@@ -104,6 +105,8 @@ class AddEventPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.read(addEventPageNotifierProvider);
+    final notifier = ref.read(addEventPageNotifierProvider.notifier);
     final descriptionController = useTextEditingController(text: "");
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -126,11 +129,10 @@ class AddEventPage extends HookConsumerWidget {
                   shape: BoxShape.rectangle,
                   border: Border.all(color: Colors.blue, width: 1)),
               child: TextField(
-                onTap: () {},
+                onChanged: (value) => {notifier.setDescription(value)},
                 decoration: const InputDecoration(
                     border: InputBorder.none, hintText: " 日記を書こう！"),
                 controller: descriptionController,
-                onChanged: _handleText,
               ),
             ),
             const SizedBox(height: 20),
