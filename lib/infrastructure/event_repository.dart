@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:expressive_writing/domain/entity/event.dart';
 
@@ -27,8 +28,17 @@ class EventRepository {
         .toList();
   }
 
-  Future<void> addEvent({required Event event}) async {
-    await _eventRef.doc().set(event.toJson());
+  Future<void> addEvent(
+      {required String description,
+      required int wordCount,
+      required DateTime createdAt,
+      required String madeBy}) async {
+    await _eventRef.doc().set({
+      "description": description,
+      "wordCount": wordCount,
+      "createdAt": createdAt,
+      "madeBy": madeBy,
+    });
   }
 
   Future<void> update() async {}
