@@ -7,7 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 final addEventPageNotifierProvider =
-    StateNotifierProvider<AddEventPageNotifier, AddEventPageState>(
+    StateNotifierProvider.autoDispose<AddEventPageNotifier, AddEventPageState>(
   (ref) => AddEventPageNotifier(
     eventRepository: ref.read(eventRepositoryProvider),
     authRepository: ref.read(authRepositoryProvider),
