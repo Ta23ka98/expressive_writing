@@ -105,9 +105,9 @@ class AddEventPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.read(addEventPageNotifierProvider);
+    final state = ref.watch(addEventPageNotifierProvider);
     final notifier = ref.read(addEventPageNotifierProvider.notifier);
-    final descriptionController = useTextEditingController(text: "");
+    final controller = useTextEditingController(text: "");
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -132,7 +132,7 @@ class AddEventPage extends HookConsumerWidget {
                 onChanged: (value) => {notifier.setDescriptionAndCount(value)},
                 decoration: const InputDecoration(
                     border: InputBorder.none, hintText: " 日記を書こう！"),
-                controller: descriptionController,
+                controller: controller,
               ),
             ),
             const SizedBox(height: 20),
@@ -154,7 +154,7 @@ class AddEventPage extends HookConsumerWidget {
                   Navigator.pop(context);
                 },
                 //addEventMethod,
-                child: Text("完了"),
+                child: const Text("完了"),
               ),
             )
           ],
