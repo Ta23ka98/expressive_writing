@@ -13,7 +13,7 @@ class NavigationPage extends StatefulWidget {
 class _NavigationPageState extends State<NavigationPage> {
   int _selectedPage = 0;
   final _pageItems = [
-    const CalenderPage(),
+    CalenderPage(),
     const UserPage(),
     const SettingsPage(),
   ];
