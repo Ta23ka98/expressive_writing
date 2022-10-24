@@ -7,10 +7,10 @@ final eventRepositoryProvider = Provider((ref) => EventRepository()..init());
 
 class EventRepository {
   final _db = FirebaseFirestore.instance;
-  late final CollectionReference _eventRef;
+  late final CollectionReference _eventsRef;
 
   void init() {
-    _eventRef = _db.collection("Events");
+    _eventsRef = _db.collection("Events");
   }
 
   // Future<Event> findById({required String id}) async {
@@ -19,7 +19,7 @@ class EventRepository {
   // }
 
   Future<List<Event>> fetchAllEvents({required String id}) async {
-    final eventRef = _eventRef.where("madeBy", isEqualTo: id);
+    final eventRef = _eventsRef.where("madeBy", isEqualTo: id);
     final snapshot = await eventRef.get();
     return snapshot.docs
         .map((item) => Event.fromJson(
@@ -33,13 +33,15 @@ class EventRepository {
       required int wordCount,
       required DateTime createdAt,
       required String madeBy}) async {
-    await _eventRef.doc().set({
+    await _eventsRef.doc().set({
       "description": description,
       "wordCount": wordCount,
       "createdAt": createdAt,
       "madeBy": madeBy,
     });
   }
+
+  Future<void> levelUp() async {}
 
   Future<void> update() async {}
 
