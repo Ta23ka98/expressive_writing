@@ -9,31 +9,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AddEventPage extends HookConsumerWidget {
-  int charLength = 0;
-  String _text = '';
   final DateTime _focusedDay = DateTime.now();
-  //final String userID = FirebaseAuth.instance.currentUser!.uid;
-  final CollectionReference eventCollection =
-      FirebaseFirestore.instance.collection('EventExample');
-
-  @override
-  void dispose() {
-    // _textEditingController.dispose();
-    // super.dispose();
-  }
-
-  void _handleText(String e) {
-    // setState(() {
-    //   _text = e;
-    //   charLength = _text.length;
-    // });
-  }
-
-  // void addEventMethod() {
-  //   addEvent();
-  //   updateUser();
-  //   LevelUp();
-  // }
 
   // Future<void> addEvent() {
   //   if (_textEditingController.text.isEmpty) {

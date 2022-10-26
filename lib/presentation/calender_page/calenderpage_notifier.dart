@@ -48,10 +48,8 @@ class CalenderPageNotifier extends StateNotifier<CalenderPageState> {
       //final DateTime createdAt = event.createdAt!;
       if (eventsMap[createdAt] == null) {
         eventsMap[createdAt] = [Event(description: description)];
-        print("Added!!!");
       } else {
         eventsMap[createdAt]!.add(Event(description: description));
-        print("Not...");
       }
       state = state.copyWith(events: eventsMap);
     }
@@ -63,5 +61,9 @@ class CalenderPageNotifier extends StateNotifier<CalenderPageState> {
       required List<Event> events}) {
     state = state.copyWith(
         selectedDay: selectedDay, focusedDay: focusedDay, eventList: events);
+  }
+
+  List<Event> eventLoader(day) {
+    return state.events?[day] ?? [];
   }
 }

@@ -10,26 +10,21 @@ class CalenderPage extends HookConsumerWidget {
       DateTime.now().year, DateTime.now().month - 3, DateTime.now().day);
   final kLastDay = DateTime(
       DateTime.now().year, DateTime.now().month + 3, DateTime.now().day);
+  CalendarFormat _calendarFormat = CalendarFormat.month;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(calenderPageNotifierProvider);
     final notifier = ref.watch(calenderPageNotifierProvider.notifier);
-    //notifier.fetchAll();
+    DateTime? selectedDay = state.focusedDay;
+    late final ValueNotifier<List<Event>> selectedEvents = ValueNotifier(
+      notifier.eventLoader(selectedDay!),
+    );
     notifier.init();
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(
-              height: 50,
-              child: Center(
-                  child: Text(
-                "CalenderPage",
-                style: TextStyle(fontSize: 15),
-              )),
-            ),
-            const Divider(),
             TableCalendar<Event>(
               firstDay: kFirstDay,
               lastDay: kLastDay,
@@ -37,8 +32,9 @@ class CalenderPage extends HookConsumerWidget {
               selectedDayPredicate: (DateTime date) {
                 return isSameDay(state.selectedDay, date);
               },
+              calendarFormat: _calendarFormat,
               eventLoader: (day) {
-                return state.events?[day] ?? [];
+                return notifier.eventLoader(day);
               },
               onDaySelected: (selectedDay, focusedDay) {
                 notifier.onDaySelected(
@@ -48,34 +44,34 @@ class CalenderPage extends HookConsumerWidget {
               },
             ),
             const SizedBox(height: 8.0),
-            // SizedBox(
-            //   child: ValueListenableBuilder<List<Event>>(
-            //     valueListenable: _selectedEvents,
-            //     builder: (context, value, _) {
-            //       return ListView.builder(
-            //         scrollDirection: Axis.vertical,
-            //         shrinkWrap: true,
-            //         itemCount: value.length,
-            //         itemBuilder: (context, index) {
-            //           return Container(
-            //             margin: const EdgeInsets.symmetric(
-            //               horizontal: 12.0,
-            //               vertical: 4.0,
-            //             ),
-            //             decoration: BoxDecoration(
-            //               border: Border.all(),
-            //               borderRadius: BorderRadius.circular(12.0),
-            //             ),
-            //             child: ListTile(
-            //               onTap: () => print('${value[index]}'),
-            //               title: Text('${value[index]}'),
-            //             ),
-            //           );
-            //         },
-            //       );
-            //     },
-            //   ),
-            // ),
+            SizedBox(
+              child: ValueListenableBuilder<List<Event>>(
+                valueListenable: selectedEvents,
+                builder: (context, value, _) {
+                  return ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemCount: value.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: const EdgeInsets.symmetric(
+                          horizontal: 12.0,
+                          vertical: 4.0,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border.all(),
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: ListTile(
+                          onTap: () => print('${value[index].description}'),
+                          title: Text('${value[index].description}'),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
