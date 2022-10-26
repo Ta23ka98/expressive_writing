@@ -2,16 +2,18 @@ import 'package:expressive_writing/infrastructure/auth_repository.dart';
 import 'package:expressive_writing/infrastructure/event_repository.dart';
 import 'package:expressive_writing/infrastructure/user_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:expressive_writing/state/calenderpage_state.dart';
 
 import '../../domain/entity/event.dart';
 
-final calenderPageNotifierProvider = StateNotifierProvider((ref) =>
-    CalenderPageNotifier(
-        authRepository: ref.read(authRepositoryProvider),
-        eventRepository: ref.watch(eventRepositoryProvider),
-        userRepository: ref.read(userRepositoryProvider)));
+final calenderPageNotifierProvider =
+    StateNotifierProvider<CalenderPageNotifier, CalenderPageState>((ref) =>
+        CalenderPageNotifier(
+            authRepository: ref.read(authRepositoryProvider),
+            eventRepository: ref.watch(eventRepositoryProvider),
+            userRepository: ref.read(userRepositoryProvider)));
 
-class CalenderPageNotifier extends StateNotifier<List<Event>?> {
+class CalenderPageNotifier extends StateNotifier<CalenderPageState> {
   final BaseAuthRepository _authRepository;
   final EventRepository _eventRepository;
   final UserRepository _userRepository;
@@ -23,10 +25,44 @@ class CalenderPageNotifier extends StateNotifier<List<Event>?> {
       : _authRepository = authRepository,
         _eventRepository = eventRepository,
         _userRepository = userRepository,
-        super(const []);
+        super(
+          CalenderPageState(
+              focusedDay: DateTime.now(),
+              selectedDay: null,
+              events: null,
+              eventList: null),
+        );
 
-  Future<List<Event>?> fetchAll() async {
-    final uid = _authRepository.getUid();
-    await _eventRepository.fetchAllEvents(id: uid!);
+  Future<void> init() async {
+    final events =
+        await _eventRepository.fetchAllEvents(id: _authRepository.getUid()!);
+    Map<DateTime, List<Event>>? eventsMap = {};
+    //if (events != null) {
+    for (Event event in events!) {
+      final String description = event.description!;
+      final createdAt = DateTime.utc(
+        event.createdAt!.year,
+        event.createdAt!.month,
+        event.createdAt!.day,
+      );
+      //final DateTime createdAt = event.createdAt!;
+      if (eventsMap[createdAt] == null) {
+        eventsMap[createdAt] = [Event(description: description)];
+        print("Added!!!");
+      } else {
+        eventsMap[createdAt]!.add(Event(description: description));
+        print("Not...");
+      }
+      state = state.copyWith(events: eventsMap);
+    }
+  }
+  //masataka@email.com
+
+  void onDaySelected(
+      {required DateTime selectedDay,
+      required DateTime focusedDay,
+      required List<Event> events}) {
+    state = state.copyWith(
+        selectedDay: selectedDay, focusedDay: focusedDay, eventList: events);
   }
 }
