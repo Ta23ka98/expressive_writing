@@ -13,11 +13,6 @@ class EventRepository {
     _eventsRef = _db.collection("Events");
   }
 
-  // Future<Event> findById({required String id}) async {
-  //   final doc = await _eventRef.doc(id).get();
-  //   return Event.fromJson(_jsonFromSnapShot(doc));
-  // }
-
   Future<List<Event>>? fetchAllEvents({required String id}) async {
     final eventRef = _eventsRef.where("madeBy", isEqualTo: id);
     final snapshot = await eventRef.get();
