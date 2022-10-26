@@ -56,7 +56,6 @@ class CalenderPageNotifier extends StateNotifier<CalenderPageState> {
       state = state.copyWith(events: eventsMap);
     }
   }
-  //masataka@email.com
 
   void onDaySelected(
       {required DateTime selectedDay,
