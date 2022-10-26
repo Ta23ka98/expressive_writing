@@ -146,7 +146,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_User extends _User with DiagnosticableTreeMixin {
+class _$_User extends _User {
   _$_User(
       {@JsonKey(name: "id") required this.id,
       @JsonKey(name: "userName") required this.userName,
@@ -174,20 +174,8 @@ class _$_User extends _User with DiagnosticableTreeMixin {
   final int diaryNumbers;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'User(id: $id, userName: $userName, userLevel: $userLevel, diaryLetters: $diaryLetters, diaryNumbers: $diaryNumbers)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'User'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('userName', userName))
-      ..add(DiagnosticsProperty('userLevel', userLevel))
-      ..add(DiagnosticsProperty('diaryLetters', diaryLetters))
-      ..add(DiagnosticsProperty('diaryNumbers', diaryNumbers));
   }
 
   @override
