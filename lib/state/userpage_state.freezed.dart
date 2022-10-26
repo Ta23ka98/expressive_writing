@@ -122,7 +122,7 @@ class __$$_UserPageStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UserPageState extends _UserPageState with DiagnosticableTreeMixin {
+class _$_UserPageState extends _UserPageState {
   _$_UserPageState({required this.user, required this.event}) : super._();
 
   @override
@@ -131,17 +131,8 @@ class _$_UserPageState extends _UserPageState with DiagnosticableTreeMixin {
   final Event event;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'UserPageState(user: $user, event: $event)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'UserPageState'))
-      ..add(DiagnosticsProperty('user', user))
-      ..add(DiagnosticsProperty('event', event));
   }
 
   @override

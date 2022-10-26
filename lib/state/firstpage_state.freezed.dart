@@ -111,7 +111,7 @@ class __$$_FirstPageStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FirstPageState extends _FirstPageState with DiagnosticableTreeMixin {
+class _$_FirstPageState extends _FirstPageState {
   _$_FirstPageState(
       {required this.email, required this.password, required this.userName})
       : super._();
@@ -124,18 +124,8 @@ class _$_FirstPageState extends _FirstPageState with DiagnosticableTreeMixin {
   final String userName;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'FirstPageState(email: $email, password: $password, userName: $userName)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'FirstPageState'))
-      ..add(DiagnosticsProperty('email', email))
-      ..add(DiagnosticsProperty('password', password))
-      ..add(DiagnosticsProperty('userName', userName));
   }
 
   @override
