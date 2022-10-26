@@ -1,13 +1,10 @@
 //import 'package:expressive_diary/Screens/frame_widget.dart';
 //import 'package:expressive_diary/Screens/main.dart';
-import 'dart:math';
-
 import 'package:expressive_writing/common/logger_provider.dart';
 import 'package:expressive_writing/presentation/first_page/firstpage_notifier.dart';
 import 'package:expressive_writing/presentation/navigation_page/navigation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -16,68 +13,6 @@ class FirstPage extends HookConsumerWidget {
   String userEmail = "";
   String userPassword = "";
   String infoText = "";
-
-  // Future<void> SignUp() async {
-  //   try {
-  //     final UserCredential result = await auth.createUserWithEmailAndPassword(
-  //       email: userEmail,
-  //       password: userPassword,
-  //     );
-  //
-  //     late final userID = FirebaseAuth.instance.currentUser?.uid;
-  //
-  //     final CollectionReference userCollection =
-  //         FirebaseFirestore.instance.collection('Users');
-  //     userCollection
-  //         .doc(userID)
-  //         .set({
-  //           'name': "ゲスト",
-  //           'userLevel': 1,
-  //           'diaryNumbers': 0,
-  //           'diaryLetters': 0,
-  //           'lettersUntilNextLevel': 5,
-  //         })
-  //         .then(
-  //           (value) => print("User Added!!!"),
-  //         )
-  //         .catchError(
-  //           (error) => print("Failed to add user...: $error"),
-  //         );
-  //
-  //     await Navigator.of(context).pushReplacement(
-  //       MaterialPageRoute(
-  //         builder: (context) {
-  //           return const NavigationPage();
-  //         },
-  //       ),
-  //     );
-  //   } catch (e) {
-  //     setState(() {
-  //       infoText = "登録失敗：${e.toString()}";
-  //     });
-  //   }
-  // }
-
-  // Future<void> Login() async {
-  //   try {
-  //     final UserCredential result = await auth.signInWithEmailAndPassword(
-  //       email: userEmail,
-  //       password: userPassword,
-  //     );
-  //     //final User user = result.user!;
-  //     await Navigator.of(context).pushReplacement(
-  //       MaterialPageRoute(
-  //         builder: (context) {
-  //           return const NavigationPage();
-  //         },
-  //       ),
-  //     );
-  //   } catch (e) {
-  //     setState(() {
-  //       infoText = "ログイン失敗：${e.toString()}";
-  //     });
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
