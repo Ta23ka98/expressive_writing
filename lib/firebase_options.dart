@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -49,9 +46,19 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCekHRFhd2Bt0AqURVA8J4Sq1YwnSqg59w',
+    appId: '1:1051945275338:web:215212541bff78c74ac933',
+    messagingSenderId: '1051945275338',
+    projectId: 'expressive-writing-aab23',
+    authDomain: 'expressive-writing-aab23.firebaseapp.com',
+    storageBucket: 'expressive-writing-aab23.appspot.com',
+    measurementId: 'G-M6TWV36WYS',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDGvgNUeP9RW8HXGlJHkAAkCR9tTLXvcYU',
-    appId: '1:1051945275338:android:d882fbb7c82f210a4ac933',
+    appId: '1:1051945275338:android:0a2104bd2331bdf64ac933',
     messagingSenderId: '1051945275338',
     projectId: 'expressive-writing-aab23',
     storageBucket: 'expressive-writing-aab23.appspot.com',
@@ -59,11 +66,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAq3XFJBTTnwYZCoJWspg6JQG4IRcoJ2Cc',
-    appId: '1:1051945275338:ios:90c975d6a2861a814ac933',
+    appId: '1:1051945275338:ios:4d77da097cc943cc4ac933',
     messagingSenderId: '1051945275338',
     projectId: 'expressive-writing-aab23',
     storageBucket: 'expressive-writing-aab23.appspot.com',
-    iosClientId: '1051945275338-jvh7mqid48ge969qkkb1s676avfu9m0q.apps.googleusercontent.com',
-    iosBundleId: 'com.example.expressiveWriting',
+    iosClientId: '1051945275338-2gincrd2lo3ot2rn323ivrbbkoe4bpos.apps.googleusercontent.com',
+    iosBundleId: 'com.Ta23ka98.expressivewriting',
   );
 }

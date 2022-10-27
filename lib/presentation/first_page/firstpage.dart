@@ -28,6 +28,11 @@ class FirstPage extends HookConsumerWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const Text(
+                "筆記療法アプリ",
+                style: TextStyle(fontSize: 30, color: Colors.blue),
+              ),
+              const SizedBox(height: 30),
               TextFormField(
                 controller: emailController,
                 decoration: const InputDecoration(labelText: "E-mail"),
