@@ -15,7 +15,7 @@ class _NavigationPageState extends State<NavigationPage> {
   final _pageItems = [
     CalenderPage(),
     const UserPage(),
-    const SettingsPage(),
+    //const SettingsPage(),
   ];
 
   void onPageSelection(int index) {
@@ -36,8 +36,8 @@ class _NavigationPageState extends State<NavigationPage> {
           BottomNavigationBarItem(
               icon: Icon(Icons.calendar_month), label: "Diary"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "User"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings), label: "Settings"),
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.settings), label: "Settings"),
         ],
       ),
     );
