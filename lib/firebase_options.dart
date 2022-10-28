@@ -48,17 +48,17 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyCekHRFhd2Bt0AqURVA8J4Sq1YwnSqg59w',
-    appId: '1:1051945275338:web:215212541bff78c74ac933',
+    appId: '1:1051945275338:web:9cd7ae6555fbd7eb4ac933',
     messagingSenderId: '1051945275338',
     projectId: 'expressive-writing-aab23',
     authDomain: 'expressive-writing-aab23.firebaseapp.com',
     storageBucket: 'expressive-writing-aab23.appspot.com',
-    measurementId: 'G-M6TWV36WYS',
+    measurementId: 'G-1L2DHPBCCN',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDGvgNUeP9RW8HXGlJHkAAkCR9tTLXvcYU',
-    appId: '1:1051945275338:android:0a2104bd2331bdf64ac933',
+    appId: '1:1051945275338:android:e2f18b8b568183a54ac933',
     messagingSenderId: '1051945275338',
     projectId: 'expressive-writing-aab23',
     storageBucket: 'expressive-writing-aab23.appspot.com',
@@ -66,11 +66,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAq3XFJBTTnwYZCoJWspg6JQG4IRcoJ2Cc',
-    appId: '1:1051945275338:ios:4d77da097cc943cc4ac933',
+    appId: '1:1051945275338:ios:ce6174037f5ec3ab4ac933',
     messagingSenderId: '1051945275338',
     projectId: 'expressive-writing-aab23',
     storageBucket: 'expressive-writing-aab23.appspot.com',
-    iosClientId: '1051945275338-2gincrd2lo3ot2rn323ivrbbkoe4bpos.apps.googleusercontent.com',
-    iosBundleId: 'com.Ta23ka98.expressivewriting',
+    iosClientId: '1051945275338-9bi7gh4d81vtbfp295sl3gi0q088c1qi.apps.googleusercontent.com',
+    iosBundleId: 'com.Ta23ka98.expressivediary',
   );
 }
