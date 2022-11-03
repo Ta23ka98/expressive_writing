@@ -1,28 +1,84 @@
-# expressive_writing
+# 筆記療法アプリ
 
-A presonal project with flutter.
+投稿された日記の字数をカウントし、ユーザがレベルアップすることで楽しく日記を習慣化するアプリ。
 
-## App Overview
+([元はStatefulで実装していたアプリ](https://github.com/Ta23ka98/expressive_diary)を状態管理・アーキテクチャを採用し、改修したリポジトリ)
 
-A simple flutter app with TableCalneder and memo functions.
+## メイン機能
 
-Main functions
- - Calender
- - Memo
- - Level up function
+①カレンダー機能
+
+ - 投稿した日記をカレンダーで表示する機能
+
+②日記を投稿する機能
+
+ - 日記を投稿し、データベースに保存する機能
+
+③ユーザのレベルアップ機能
+
+ - 投稿した日記の字数をカウントし、それに応じてユーザがレベルアップする機能
+
+## ①カレンダー機能
+
+- 日記を確認する画面
+  - カレンダー：投稿した日記が確認できる
+  - カレンダーをタップ：その日の投稿が一覧で確認できる
+  - +ボタンをタップ：②日記を投稿する画面に遷移する
+
+https://user-images.githubusercontent.com/79580546/199145665-b865127e-5ad5-44e1-b3a8-96585b048ab0.mov
+
+
+  
+
+## ②日記を投稿する機能
+
+- 日記を投稿する画面
+  - 現在の日付
+  - 日記の内容を書くためのTextField
+  - ```○字!```には入力中の字数がカウントされる
+  - 日記を投稿するボタン(+カウントされた字数を使ってユーザをレベルアップする)
+
+https://user-images.githubusercontent.com/79580546/199145740-d936cc75-3024-49bd-8c5b-bac134bd2784.mov
+
+
+
+## ③ユーザのレベルアップ機能
+
+- ユーザ画面
+  - 各パラメータ：ユーザのこれまでの投稿データが表示される
+  - ユーザのレベル
+  - 日記の数
+  - これまでの字数
+  - 次のレベルアップまでの字数
+
+- レベルアップ機能
+  - (後述)
+
+https://user-images.githubusercontent.com/79580546/199145779-66fb10b8-9145-408a-a657-e949746cd9c0.mov
+
+## レベルアップ機能の仕様について
+
+<img width="443" alt="スクリーンショット 2022-11-01 11 36 43" src="https://user-images.githubusercontent.com/79580546/199146750-ca372b62-7874-405b-a0a6-2fcd5d6f9f2d.png">
+
+- レベルアップの計算方法
+  - for文によって、各レベルについてminimumとmaximumの間に入るようなレベルが算出される
+  - この時、minimum: {5 x (各レベル-1)^2}、maximum：{5 x 各レベル^2}で計算される
+  - if文によって、このようなレベルが当てはまる時、処理を中断する
+  - 新しくレベルが更新される
+
  
-## StateManagement
+## 状態管理
 
-hooks_riverpod + state_notifier + freezed
+ - hooks_riverpod + state_notifier + freezed
 
-## Architecture
+## アーキテクチャ
 
-MVVM + Repository
+ - MVVM + Repository
 
 ## Flutter Version manager(FVM)
 
-ver 3.0.5
+ - ver 3.0.5
 
-## Branch operations
+## ブランチ管理
 
-Git-flow
+ - Git-flow
