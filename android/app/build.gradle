@@ -71,17 +71,13 @@ if (keystorePropertiesFile.exists()) {
         }
         buildTypes {
             release {
-                // TODO: Add your own signing config for the release build.
-                // Signing with the debug keys for now, so `flutter run --release` works.
                 signingConfig signingConfigs.release
             }
         }
     }
-
     flutter {
         source '../..'
     }
-
     dependencies {
-        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     }

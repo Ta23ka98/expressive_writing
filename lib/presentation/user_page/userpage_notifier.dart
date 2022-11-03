@@ -25,4 +25,8 @@ class UserPageNotifier extends StateNotifier<UserPageState> {
     final user = await _userRepository.findById(id: uid!);
     state = state.copyWith(user: user);
   }
+
+  Future<void> deleteUser() async {
+    await _authRepository.deleteUser();
+  }
 }

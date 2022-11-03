@@ -41,6 +41,19 @@ class UserPage extends HookConsumerWidget {
           const Divider(),
           const ListTile(title: Text('Letters until next level： 100')),
           const Divider(),
+          const SizedBox(
+            height: 30,
+          ),
+          SizedBox(
+            height: 50,
+            width: 200,
+            child: ElevatedButton(
+                onPressed: () async {
+                  await notifier.deleteUser();
+                },
+                style: ElevatedButton.styleFrom(primary: Colors.red),
+                child: const Text("アカウントを削除")),
+          ),
         ],
       ),
     );
