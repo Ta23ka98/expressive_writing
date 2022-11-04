@@ -2,6 +2,7 @@
 //import 'package:expressive_diary/Screens/main.dart';
 import 'package:expressive_writing/common/logger_provider.dart';
 import 'package:expressive_writing/presentation/delete_page/delete_page_notifier.dart';
+import 'package:expressive_writing/presentation/first_page/firstpage.dart';
 import 'package:expressive_writing/presentation/first_page/firstpage_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -41,7 +42,10 @@ class DeletePage extends HookConsumerWidget {
                 child: ElevatedButton(
                     onPressed: () async {
                       await notifier.deleteUser();
-                      Navigator.pop(context);
+                      (_) => Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (_) => FirstPage()),
+                          (_) => false);
                     },
                     style: ElevatedButton.styleFrom(primary: Colors.red),
                     child: const Text("アカウントを削除")),
