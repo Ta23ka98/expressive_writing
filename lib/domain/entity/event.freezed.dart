@@ -133,7 +133,7 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Event extends _Event {
+class _$_Event extends _Event with DiagnosticableTreeMixin {
   _$_Event(
       {@JsonKey(name: "description") this.description,
       @JsonKey(name: "wordCount") this.wordCount,
@@ -159,8 +159,19 @@ class _$_Event extends _Event {
   final DateTime? createdAt;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'Event(description: $description, wordCount: $wordCount, madeBy: $madeBy, createdAt: $createdAt)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Event'))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('wordCount', wordCount))
+      ..add(DiagnosticsProperty('madeBy', madeBy))
+      ..add(DiagnosticsProperty('createdAt', createdAt));
   }
 
   @override

@@ -2,6 +2,7 @@ import 'package:expressive_writing/presentation/calender_page/calender_page.dart
 import 'package:expressive_writing/presentation/setting_page/settings_page.dart';
 import 'package:expressive_writing/presentation/user_page/user_page.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class NavigationPage extends StatefulWidget {
   const NavigationPage({Key? key}) : super(key: key);
@@ -27,7 +28,16 @@ class _NavigationPageState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Expressive Writing")),
+      appBar: AppBar(
+        title: const Text("Expressive Writing"),
+        actions: [
+          IconButton(
+              onPressed: () async {
+                await FirebaseAuth.instance.signOut();
+              },
+              icon: Icon(Icons.logout))
+        ],
+      ),
       body: _pageItems[_selectedPage],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedPage,

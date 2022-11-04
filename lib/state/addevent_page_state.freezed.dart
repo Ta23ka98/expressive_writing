@@ -124,7 +124,8 @@ class __$$_AddEventPageStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AddEventPageState extends _AddEventPageState {
+class _$_AddEventPageState extends _AddEventPageState
+    with DiagnosticableTreeMixin {
   _$_AddEventPageState(
       {required this.description,
       required this.wordCount,
@@ -142,8 +143,19 @@ class _$_AddEventPageState extends _AddEventPageState {
   final String madeBy;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AddEventPageState(description: $description, wordCount: $wordCount, createdAt: $createdAt, madeBy: $madeBy)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AddEventPageState'))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('wordCount', wordCount))
+      ..add(DiagnosticsProperty('createdAt', createdAt))
+      ..add(DiagnosticsProperty('madeBy', madeBy));
   }
 
   @override

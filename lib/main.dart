@@ -1,4 +1,5 @@
 import 'package:expressive_writing/firebase_options.dart';
+import 'package:expressive_writing/infrastructure/auth_repository.dart';
 import 'package:expressive_writing/presentation/first_page/firstpage.dart';
 import 'package:expressive_writing/presentation/navigation_page/navigation_page.dart';
 import 'package:flutter/material.dart';
@@ -11,17 +12,28 @@ void main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final authState = ref.watch(authStateProvider);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: FirstPage(),
+      home: authState.when(
+        data: (data) {
+          if (data != null) {
+            return const NavigationPage();
+          } else {
+            return FirstPage();
+          }
+        },
+        error: (e, trace) => const CircularProgressIndicator(),
+        loading: () => const CircularProgressIndicator(),
+      ),
     );
   }
 }

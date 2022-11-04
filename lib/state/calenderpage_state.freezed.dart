@@ -130,7 +130,8 @@ class __$$_CalenderPageStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CalenderPageState extends _CalenderPageState {
+class _$_CalenderPageState extends _CalenderPageState
+    with DiagnosticableTreeMixin {
   _$_CalenderPageState(
       {required this.focusedDay,
       required this.selectedDay,
@@ -163,8 +164,19 @@ class _$_CalenderPageState extends _CalenderPageState {
   }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'CalenderPageState(focusedDay: $focusedDay, selectedDay: $selectedDay, events: $events, eventList: $eventList)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CalenderPageState'))
+      ..add(DiagnosticsProperty('focusedDay', focusedDay))
+      ..add(DiagnosticsProperty('selectedDay', selectedDay))
+      ..add(DiagnosticsProperty('events', events))
+      ..add(DiagnosticsProperty('eventList', eventList));
   }
 
   @override

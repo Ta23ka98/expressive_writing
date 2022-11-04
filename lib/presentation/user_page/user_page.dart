@@ -1,3 +1,4 @@
+import 'package:expressive_writing/presentation/delete_page/delete_page.dart';
 import 'package:flutter/material.dart';
 import 'userpage_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -48,8 +49,9 @@ class UserPage extends HookConsumerWidget {
             height: 50,
             width: 200,
             child: ElevatedButton(
-                onPressed: () async {
-                  await notifier.deleteUser();
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => DeletePage()));
                 },
                 style: ElevatedButton.styleFrom(primary: Colors.red),
                 child: const Text("アカウントを削除")),

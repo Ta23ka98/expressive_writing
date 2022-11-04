@@ -10,9 +10,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class FirstPage extends HookConsumerWidget {
   final FirebaseAuth auth = FirebaseAuth.instance;
-  String userEmail = "";
-  String userPassword = "";
-  String infoText = "";
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -47,10 +44,6 @@ class FirstPage extends HookConsumerWidget {
                 onChanged: (String value) {
                   return notifier.setPassword(value);
                 },
-              ),
-              Container(
-                padding: const EdgeInsets.all(8),
-                child: Text(infoText),
               ),
               SizedBox(
                 width: double.infinity,
